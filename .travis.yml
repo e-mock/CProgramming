@@ -2,4 +2,4 @@ language: c
 
 install: gcc
 
-script: make
+script: makefile
