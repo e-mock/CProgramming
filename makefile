@@ -1,2 +1,2 @@
-hellomake: hello_world.c
-  gcc -o hellomake hello_world.c
+make: hello_world.c
+  gcc -o make hello_world.c
