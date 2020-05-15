@@ -2,6 +2,6 @@ language: c
 
 install: gcc
 
-script: 
-  - gcc  hello_world.c -o hello_world
-  - .\hello_world
+script:
+  - gcc   	hello_world.c -o output
+  - ./output
