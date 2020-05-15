@@ -21,7 +21,7 @@ int main() {
    printf("Hello again");
    
    int sum = add(2, 2);
-   int sum = add(2, 3);
+   int sum2 = add(2, 3);
    
    return 0;
 }
