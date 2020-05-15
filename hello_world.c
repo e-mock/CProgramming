@@ -20,7 +20,7 @@ int main() {
    printf("Hello World!");
    printf("Hello again");
    
-   int sum = add(2, 2);
+   int sum = add(2, 2)
    
    return 0;
 }
