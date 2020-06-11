@@ -54,26 +54,7 @@ int main(void)
     PORTD &= ~_BV(DDD7);
 
 
-    //ADC setup 
-    //datasheet 24.9.1 
-    //REFS1, REFS0 = 0, 1 means AVcc with external capacitor at AREF pin
-    //REFS1 = 0
-    ADMUX &= ~_BV(REFS1);
-    //REFS0 = 1
-    ADMUX |= _BV(REFS0);
-  
-  
-  	//left adjust ADC reading ADMUX(ADLAR) = 1
-  	//right adjust ADMUX(ADLAR) = 0	
-  ADMUX &= ~_BV(ADLAR);
-  	
-
-    //enable ADC by making ADEN bit = 1
-    ADCSRA |= _BV(ADEN);
-
-    //enable ADIE bit in ADCSRA and I-bit in SREG so we can get ADC interrupts
-    ADCSRA |= _BV(ADIE);
-    //SREG |= _BV(I);
+    analogReadSetup();
 
     uint16_t analog_reading;
     int buttonState;
@@ -129,6 +110,29 @@ void setDigital(int port, int pin, bool value){
   }
 
   _delay_ms(500);
+}
+
+void analogReadSetup(){
+      //ADC setup 
+    //datasheet 24.9.1 
+    //REFS1, REFS0 = 0, 1 means AVcc with external capacitor at AREF pin
+    //REFS1 = 0
+    ADMUX &= ~_BV(REFS1);
+    //REFS0 = 1
+    ADMUX |= _BV(REFS0);
+  
+  
+  	//left adjust ADC reading ADMUX(ADLAR) = 1
+  	//right adjust ADMUX(ADLAR) = 0	
+  ADMUX &= ~_BV(ADLAR);
+  	
+
+    //enable ADC by making ADEN bit = 1
+    ADCSRA |= _BV(ADEN);
+
+    //enable ADIE bit in ADCSRA and I-bit in SREG so we can get ADC interrupts
+    ADCSRA |= _BV(ADIE);
+    //SREG |= _BV(I);
 }
 
 uint16_t readAnalog(int pin){
